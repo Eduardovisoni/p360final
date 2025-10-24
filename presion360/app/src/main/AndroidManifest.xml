@@ -21,7 +21,7 @@
         tools:replace="android:allowBackup">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.auth.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Presion360">
@@ -32,71 +32,71 @@
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="false"
             android:label="Iniciar Sesión"
             android:theme="@style/Theme.Presion360" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:label="Registrar Cuenta"
             android:exported="false" />
 
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.auth.RegisterActivity"
             android:label="Completar Perfil"
             android:exported="false" />
 
         <activity
-            android:name=".TermsActivity"
+            android:name=".ui.terms.TermsActivity"
             android:label="Términos y Condiciones"
             android:exported="false" />
 
         <activity
-            android:name=".MainNavigationActivity"
+            android:name=".ui.main.MainNavigationActivity"
             android:label="@string/app_name"
             android:exported="false"
             android:theme="@style/Theme.Presion360"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ChatHistoryActivity"
+            android:name=".ui.chat.ChatHistoryActivity"
             android:exported="false"
             android:label="@string/title_activity_chat_history"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".ui.main.MainNavigationActivity" />
 
         <activity
-            android:name=".ExamsHistoryActivity"
+            android:name=".ui.history.ExamsHistoryActivity"
             android:exported="false"
             android:label="@string/title_activity_exams_history"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".ui.main.MainNavigationActivity" />
 
         <activity
-            android:name=".ChatDetailActivity"
+            android:name=".ui.chat.ChatDetailActivity"
             android:exported="false"
             android:label="Detalle de Chat"
-            android:parentActivityName=".ChatHistoryActivity" />
+            android:parentActivityName=".ui.chat.ChatHistoryActivity" />
 
         <activity
-            android:name=".AboutAppActivity"
+            android:name=".ui.settings.AboutAppActivity"
             android:exported="false"
             android:label="@string/title_activity_about_app"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".ui.main.MainNavigationActivity" />
 
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".ui.settings.UserProfileActivity"
             android:exported="false"
             android:label="Perfil de Usuario"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".ui.main.MainNavigationActivity" />
 
         <activity
-            android:name=".NotificationActivity"
+            android:name=".ui.settings.NotificationActivity"
             android:exported="false"
             android:label="Notificaciones"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".ui.main.MainNavigationActivity" />
 
-        <receiver android:name=".NotificationReceiver" android:enabled="true" />
-        <receiver android:name=".BootReceiver" android:enabled="true" android:exported="true">
+        <receiver android:name=".utils.NotificationReceiver" android:enabled="true" />
+        <receiver android:name=".utils.BootReceiver" android:enabled="true" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

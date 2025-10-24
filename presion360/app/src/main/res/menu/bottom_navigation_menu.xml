@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_exams"
+        android:icon="@android:drawable/ic_menu_edit" 
+        android:title="Exámenes" />
+
+    <item
+        android:id="@+id/navigation_chat_ia"
+        android:icon="@android:drawable/ic_menu_send" 
+        android:title="Chat IA" />
+
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@android:drawable/ic_menu_recent_history" 
+        android:title="Historial" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@android:drawable/ic_menu_preferences" 
+        android:title="Ajustes" />
+</menu>

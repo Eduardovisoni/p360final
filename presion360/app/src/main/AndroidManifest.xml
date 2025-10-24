@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Presion360"
+        android:usesCleartextTraffic="true" 
+        tools:replace="android:allowBackup">
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Presion360">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="Iniciar Sesión"
+            android:theme="@style/Theme.Presion360" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="Registrar Cuenta"
+            android:exported="false" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Completar Perfil"
+            android:exported="false" />
+
+        <activity
+            android:name=".TermsActivity"
+            android:label="Términos y Condiciones"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainNavigationActivity"
+            android:label="@string/app_name"
+            android:exported="false"
+            android:theme="@style/Theme.Presion360"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ChatHistoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_chat_history"
+            android:parentActivityName=".MainNavigationActivity" />
+
+        <activity
+            android:name=".ExamsHistoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_exams_history"
+            android:parentActivityName=".MainNavigationActivity" />
+
+        <activity
+            android:name=".ChatDetailActivity"
+            android:exported="false"
+            android:label="Detalle de Chat"
+            android:parentActivityName=".ChatHistoryActivity" />
+
+        <activity
+            android:name=".AboutAppActivity"
+            android:exported="false"
+            android:label="@string/title_activity_about_app"
+            android:parentActivityName=".MainNavigationActivity" />
+
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false"
+            android:label="Perfil de Usuario"
+            android:parentActivityName=".MainNavigationActivity" />
+
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false"
+            android:label="Notificaciones"
+            android:parentActivityName=".MainNavigationActivity" />
+
+        <receiver android:name=".NotificationReceiver" android:enabled="true" />
+        <receiver android:name=".BootReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

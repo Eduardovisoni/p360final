@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AboutAppActivity">
+
+    <!-- Horizontal Chain for Logos -->
+
+    <TextView
+        android:id="@+id/textViewPoweredByTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_app_powered_by_title"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <!-- Text below logos -->
+
+    <ImageView
+        android:id="@+id/imageViewOpenAI"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/about_app_openai_logo_description"
+        android:src="@drawable/openai_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <ImageView
+        android:id="@+id/imageViewAndroidStudio"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/about_app_android_studio_logo_description"
+        android:src="@drawable/android_studio_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <ImageView
+        android:id="@+id/imageViewPrompt"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/about_app_prompt_logo_description"
+        android:src="@drawable/prompt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <TextView
+        android:id="@+id/textViewOpenAI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/about_app_openai_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/imageViewOpenAI"
+        app:layout_constraintStart_toStartOf="@id/imageViewOpenAI"
+        app:layout_constraintTop_toBottomOf="@id/imageViewOpenAI" />
+
+    <TextView
+        android:id="@+id/textViewAndroidStudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/about_app_android_studio_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/imageViewAndroidStudio"
+        app:layout_constraintStart_toStartOf="@id/imageViewAndroidStudio"
+        app:layout_constraintTop_toBottomOf="@id/imageViewAndroidStudio" />
+
+    <TextView
+        android:id="@+id/textViewPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/about_app_prompt_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/imageViewPrompt"
+        app:layout_constraintStart_toStartOf="@id/imageViewPrompt"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPrompt" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierLogosText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="textViewOpenAI,textViewAndroidStudio,textViewPrompt" />
+
+    <!-- Información del Desarrollador -->
+
+    <TextView
+        android:id="@+id/textViewDeveloperName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:gravity="center"
+        android:text="@string/about_app_developer_name"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <TextView
+        android:id="@+id/textViewAdditionalInfo"
+        android:layout_width="346dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        android:gravity= "left"
+        android:text="@string/about_app_additional_info"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

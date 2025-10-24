@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Presion360</string> <!-- Nombre de la app, puedes ajustarlo si ya lo tienes definido -->
+
+    <string-array name="sexo_array">
+        <item>Selecciona tu sexo</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+    <string name="exams_fragment_title">Seleccione un Examen</string>
+    <string name="exam_button_blood_pressure">Presión Sanguínea</string>
+    <string name="exam_button_pulse_pressure">Presión Arterial Pulsátil</string>
+    <string name="exam_button_heart_rate">Ritmo Cardíaco</string>
+    <string name="exam_button_respiratory_rate">Ritmo Respiratorio</string>
+
+    <!-- Strings para SettingsFragment -->
+    <string name="title_settings">Ajustes presion360</string>
+    <string name="settings_button_user_profile">Perfil del Usuario</string>
+    <string name="settings_button_send_feedback">Enviar Feedback</string>
+    <string name="settings_button_share_app">Compartir App</string>
+    <string name="settings_button_about_app">Sobre la App y Desarrollador</string>
+    <!-- <string name="settings_button_ai_chat">Consultar con Asistente IA</string> ELIMINADO SEGÚN ÚLTIMOS CAMBIOS -->
+    <string name="settings_button_logout">Cerrar Sesión</string>
+    <string name="settings_feedback_email">eduvisoni@gmail.com</string>
+    <string name="settings_feedback_subject">Feedback Presión 360</string>
+    <string name="settings_share_app_text">¡Prueba Presión 360 para monitorear tu salud! [Enlace a la app cuando esté disponible]</string>
+    <string name="settings_logout_confirm_title">Confirmar Cierre de Sesión</string>
+    <string name="settings_logout_confirm_message">¿Estás seguro que deseas cerrar sesión?</string>
+    <string name="settings_logout_confirm_yes">Sí</string>
+    <string name="settings_logout_confirm_no">No</string>
+
+    <!-- Strings para Chat IA (antes ChatActivity, ahora ChatIAFragment) -->
+    <string name="title_fragment_chat_ia">Asistente IA</string> <!-- Ajustado para título de fragmento -->
+    <string name="chat_message_hint">Escribe tu consulta aquí...</string>
+    <string name="chat_send_button_text">Enviar</string>
+    <string name="textotitulo">QWERTY \nTu asistente de Presión arterial. Haz tu consulta!</string>
+
+    <!-- Strings para HistoryFragment y sus Activities -->
+    <string name="history_button_chat_ia_text">Historial Chat IA</string>
+    <string name="history_button_exams_text">Historial Exámenes</string>
+    <string name="title_activity_chat_history">Historial de Chats IA</string>
+    <string name="title_activity_exams_history">Historial de Exámenes</string>
+    <string name="no_chat_history_available">No hay historial de chat disponible.</string>
+    <string name="no_exams_history_available">No hay historial de exámenes disponible.</string>
+    <string name="title_activity_about_app">Sobre la App</string>
+
+    <!-- Strings para ExamHistoryAdapter -->
+    <string name="exam_title_prefix">Examen día</string>
+    <string name="notes_prefix">Notas:</string>
+    <string name="button_text_copy_for_ai">Analizar con IA</string>
+    <string name="toast_exam_data_copied_for_ai">Se copiaron los datos del examen, ahora pegalos en el CHAT IA</string>
+
+    <string name="terminosyservicios">Al usar Presion360, usted acepta que la aplicación está diseñada únicamente para registrar y consultar exámenes de presión arterial con fines de seguimiento personal, sin sustituir la atención ni el diagnóstico médico profesional. Todos los datos se almacenan de manera local en su dispositivo, no se envían a la nube ni se comparten con terceros, por lo que su información permanece privada. El usuario es responsable de la seguridad de su dispositivo y del uso que haga de la aplicación. Presion360 se proporciona “tal cual”, sin garantías de exactitud o disponibilidad, y los desarrolladores no se hacen responsables por daños o perjuicios derivados de su uso.</string>
+
+    <!-- Strings para LoginActivity -->
+    <string name="login_error_user_not_registered">Cuenta no registrada en la app, favor de registrarse</string>
+    <string name="login_error_email_required">El correo es obligatorio.</string>
+    <string name="login_error_invalid_email">Correo inválido.</string>
+    <string name="login_error_password_required">La contraseña es obligatoria.</string>
+    <string name="login_success_message">Acceso concedido. ¡Bienvenido/a!</string>
+    <string name="login_error_incorrect_credentials">Correo o contraseña incorrectos.</string>
+
+    <!-- Strings para AboutAppActivity -->
+    <string name="about_app_powered_by_title">Impulsado por:</string>
+    <string name="about_app_openai_logo_description">Logo OpenAI</string>
+    <string name="about_app_openai_text">Gemini</string>
+    <string name="about_app_android_studio_logo_description">Logo Android Studio</string>
+    <string name="about_app_android_studio_text">Android Studio</string>
+    <string name="about_app_prompt_logo_description">Logo Prompt</string>
+    <string name="about_app_prompt_text">+100 prompts</string>
+    <string name="about_app_developer_name">Eduardo Visoni \nCreador de la app Presion360 (Android) Desarrollador Back End y Front End \n\nContacto: eduvisoni@gmail.com
+
+
+</string>
+    <string name="about_app_additional_info">En esta app, se pueden hacer muchas mejoras que se pueden implementar, tales como: \n\n- Inicio de sesion con Google (Firebase) \n- Guardar los datos en DB en la nube (no en local) \n- Diversas validaciones de datos y proteccion \n- Analisis de datos fotograficos por Google Cloud Vision API</string>
+
+</resources>

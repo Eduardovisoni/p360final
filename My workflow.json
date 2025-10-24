@@ -1,0 +1,304 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Presion360",
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -224,
+        272
+      ],
+      "id": "4f1c4f1b-ee40-49e8-a93e-cc8e1d5e5053",
+      "name": "correo",
+      "webhookId": "69032bce-42eb-4531-8e45-c421978159ab",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YCG1OmuetZfwL1sj",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9953d769-2e90-4065-b966-2838cd1b9755",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -960,
+        48
+      ],
+      "id": "91276078-f246-4f8d-80b0-ca878ad20519",
+      "name": "Webhook",
+      "webhookId": "9953d769-2e90-4065-b966-2838cd1b9755"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{({ response: ($json.output && $json.output.toString().includes('</thinks>')) ? $json.output.toString().split('</thinks>')[1].trim() : ($json.output ? $json.output.toString() : \"\") })}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -448,
+        48
+      ],
+      "id": "c19cfb5e-5599-4c4e-8747-fff4df4426ec",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {
+          "systemMessage": "Eres un analista especializado en resultados de presión arterial.(NUNCA incluyas tus pensamientos internos ni ninguna etiqueta XML como <think>.) Tu función principal es interpretar valores de presión arterial y, cuando sea posible, analizar el historial de mediciones del usuario para darle un contexto sobre su evolución.Antes de responder, te proporcionaré dos piezas de información clave:1.El historial de mediciones recientes del usuario (extraído de Google Sheets): {{ JSON.stringify($('Google Sheets').all()) }}2.La pregunta o el dato que el usuario acaba de enviar: {{ $json.body.message }}Tus Tareas:•Si el usuario solo te saluda, responde de manera amable y natural.•Si el usuario te pide que analices sus datos o te pide analizar los examenes realizados los ultimos dias, usa el historial que te proporcioné (en el sheet \"Google Sheets\")para darle un resumen de su tendencia. Por ejemplo: “He revisado tus datos y veo que tu presión se mantiene estable esta semana, ¡sigue así! 💪” o “Noto que tu presión ha subido un poco en tus últimas mediciones, sería bueno que lo vigiles.”•Cuando el usuario proporcione nuevos valores de presión arterial, realiza tu análisis detallado y preciso como siempre, clasificándolos y explicando las posibles causas y recomendaciones. Si tienes su historial, puedes añadir una comparación.Reglas que SIEMPRE debes seguir:•Usa un tono humano, empático y profesional. Escribe solo con puntos, comas y signos de exclamación o interrogación, sin guiones, asteriscos ni símbolos decorativos.•Aclara siempre que la interpretación es informativa y no sustituye una valoración médica profesional, recomendando acudir a un médico.•En cada análisis, recomienda entre dos y tres lugares confiables en Jutiapa, Guatemala, e incluye teléfonos de emergencia locales como los Bomberos Voluntarios y el Hospital Nacional de Jutiapa.•Siempre al final de un análisis, pregunta si quiere que se envíe una copia de los resultados al doctor y pide el correo del doctor.•Si obtienes el correo del doctor, usa tu herramienta para enviar los datos en formato HTML, con el siguiente cuerpo:•Cuerpo del correo:•Fecha: (fecha respectiva)•Valor Sistolico: (valor)•Valor Diastolico: (valor)•BPM: (valor)•Notas: (valor)•Analizado con presion 360•Usa tu herramienta para registrar CADA consulta que el usuario haga en el Google Sheet p360, en la Hoja 1, en la columna A (empezando en A2).•Si el usuario solicita información no relacionada con presión arterial, responde cordialmente que no es parte de tu función."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -784,
+        48
+      ],
+      "id": "4b371e9a-4391-4d9c-8a23-fc8022d78b4f",
+      "name": "AI AGENT P360"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Append row in sheet in Google Sheets",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI",
+          "mode": "list",
+          "cachedResultName": "p360",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "CONSULTAS": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CONSULTAS', `Cada consulta que el usuario haga, registrala en el sheet p360, en la Hoja 1, en la columna A2 (en la columna A1 esta el titulo CONSULTAS) para abajo, como una lista.`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "CONSULTAS",
+              "displayName": "CONSULTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -640,
+        288
+      ],
+      "id": "572a56ef-54f5-45a2-85c5-d128dc860e17",
+      "name": "p360",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "adgy3cbeo5gDdCOs",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -928,
+        272
+      ],
+      "id": "5354c298-746f-4c8f-a312-34537090bb6f",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "yeZuAamimG2pgDYT",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.user }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -880,
+        448
+      ],
+      "id": "f0f9fbd3-0414-457d-9055-d49c37acd72b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get row(s) in sheet in Google Sheets",
+        "documentId": {
+          "__rl": true,
+          "value": "1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI",
+          "mode": "list",
+          "cachedResultName": "p360",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 773499542,
+          "mode": "list",
+          "cachedResultName": "mediciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit#gid=773499542"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "EMAIL",
+              "lookupValue": "={{ $json.body.user }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -640,
+        448
+      ],
+      "id": "d20ccf28-c62f-41b8-baca-ff659ad5d6de",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "adgy3cbeo5gDdCOs",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "correo": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI AGENT P360": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "p360": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT P360",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "435d783c-a8b3-4375-9db7-95d11d1b4b58",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ca6185a47f86f0cd238d0d287de96b78f827d6318baf2615bfcd11f2b8598a00"
+  },
+  "id": "Qa18rEMBCN1I1P7q",
+  "tags": []
+}

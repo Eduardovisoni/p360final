@@ -1,0 +1,160 @@
+{
+  "name": "Guardar Mediciones",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d152bd55-5d61-4dba-91a0-4468d6139f9e",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cdc8ccca-04ca-48b6-abca-e4830c6c7466",
+      "name": "Webhook",
+      "webhookId": "d152bd55-5d61-4dba-91a0-4468d6139f9e"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI",
+          "mode": "list",
+          "cachedResultName": "p360",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 773499542,
+          "mode": "list",
+          "cachedResultName": "mediciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M9lJ0rRnZPqhtPP7Np42ohoHVNUbQ3Y6J4nCV47whuI/edit#gid=773499542"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "EMAIL": "={{ $json.body.email }}",
+            "FECHA": "={{ new Date().toLocaleString('es-ES', { timeZone: 'America/Lima' }) }}",
+            "SIS": "={{ $json.body.systolic }}",
+            "DIAS": "={{ $json.body.diastolic }}",
+            "BPM": "={{ $json.body.pulse }}",
+            "NOTAS": "={{ $json.body.notes }} ",
+            "ESTADO": "={{ $json.body.status }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "EMAIL",
+              "displayName": "EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FECHA",
+              "displayName": "FECHA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "SIS",
+              "displayName": "SIS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "DIAS",
+              "displayName": "DIAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "BPM",
+              "displayName": "BPM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "NOTAS",
+              "displayName": "NOTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ESTADO",
+              "displayName": "ESTADO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "e3145a32-5341-4f9b-847b-8aca74b89b5d",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "adgy3cbeo5gDdCOs",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "086a74be-d031-4166-a36b-9bd0a18331f8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ca6185a47f86f0cd238d0d287de96b78f827d6318baf2615bfcd11f2b8598a00"
+  },
+  "id": "TfSbPRPSToHlpQyj",
+  "tags": []
+}
